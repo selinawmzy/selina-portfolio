@@ -245,7 +245,7 @@ const DATA = {
           location: "北京",
           type: "text",
           tags: ["KOL管理", "信息流广告", "增长策略"],
-          [cite_start]details: "识别并管理500+小红书/抖音头部母婴生活KOL [cite: 651][cite_start]。统筹生产150+原生广告素材，单篇优质内容浏览量突破5万+ [cite: 652]。"
+          details: "识别并管理500+小红书/抖音头部母婴生活KOL。统筹生产150+原生广告素材，单篇优质内容浏览量突破5万+。"
         },
         {
           company: "小红书 (RED)",
@@ -765,3 +765,4 @@ const ChatWidget = ({ lang }) => {
 };
 
 export default App;
+
