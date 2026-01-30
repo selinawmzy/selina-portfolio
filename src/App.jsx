@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight, Mail, Linkedin, Instagram, ChevronDown, MapPin, Download, Smartphone, MessageCircle, X, Send, Loader2, Globe, Youtube, Camera, Video, Image as ImageIcon, BookOpen, Database } from 'lucide-react';
+import { ArrowUpRight, Mail, Linkedin, Instagram, ChevronDown, MapPin, Download, Smartphone, MessageCircle, X, Send, Loader2, Globe, Youtube, Camera, Video, Image as ImageIcon, BookOpen, Database, Palette } from 'lucide-react';
 
 /**
- * SELINA WANG PORTFOLIO (v9.0 - Soft Sage & Warmth)
- * 风格回归：圆润、优雅、温暖 (Warm & Organic)
- * 配色：Pastel Green (鼠尾草绿) + Cream (奶油白)
- * 内容：包含 Thesis 和 Career Path 更新
+ * SELINA WANG PORTFOLIO (v10.0 - Design & YNLY Update)
+ * 更新日志：
+ * 1. Hero背景字：改为中文 "你好"
+ * 2. Portfolio：新增 "Design Portfolio" 替换原有的 Drive，链接已更新
+ * 3. Experience：新增 YNLY Media (Influencer Marketing) 经历，数据来自简历
+ * 4. 风格：保持柔和的 Pastel Green (Jules Studio 风格)
  */
 
 const DATA = {
@@ -23,7 +25,7 @@ const DATA = {
     loading_text: "Welcome to Selina's World",
     nav: { about: "About", philosophy: "Philosophy", portfolio: "Portfolio", experience: "Experience", contact: "Contact" },
     hero: {
-      greeting_back: "Hello",
+      greeting_back: "你好", // Updated to Chinese as requested
       greeting_front: "Hello.",
       intro: "I'm Selina Wang.",
       role: "Influencer Marketing | Content Strategy | Data-Driven Creative", 
@@ -45,8 +47,8 @@ const DATA = {
       view_xhs: "Visit Xiaohongshu"
     },
     portfolio: {
-        title: "Visual & Strategic Work",
-        subtitle: "A collection of photography, videography, and strategic case studies.",
+        title: "Visual & Design Work",
+        subtitle: "A collection of design, photography, and strategic case studies.",
         items: [
             {
                 title: "Graduate Shooting Example",
@@ -55,10 +57,10 @@ const DATA = {
                 icon: "camera"
             },
             {
-                title: "Professional Portfolio Drive",
-                desc: "Curated collection of high-quality photographic work.",
-                link: "https://drive.google.com/drive/folders/1cKPRD0EXFjNVA9mrXoMCFIJilxapqvin",
-                icon: "image"
+                title: "Design Portfolio", // Updated Title
+                desc: "Creative design works including graphics, UI/UX elements, and brand visuals.", // Updated Desc
+                link: "https://drive.google.com/drive/folders/1fP-jvln5xFsfnD57bEMPPNG2qp2Wxt6I?usp=sharing", // Updated Link
+                icon: "palette" // Changed Icon
             },
             {
                 title: "Event Photography",
@@ -108,6 +110,15 @@ const DATA = {
           ]
         },
         {
+          company: "YNLY Media", // Added from Resume
+          role: "Influencer Executive Intern",
+          period: "Jun 2022 - Sept 2022",
+          location: "Beijing",
+          type: "text",
+          tags: ["KOL Management", "Paid Media", "Growth Strategy"],
+          details: "Identified and managed 500+ top lifestyle/parenting KOLs across RED & Douyin. Produced 150+ native ads and managed 200+ posts, achieving 50k+ views on top-tier content."
+        },
+        {
           company: "Xiaohongshu (RED)",
           role: "Content Planning Intern",
           period: "May 2024 - Aug 2024",
@@ -143,8 +154,8 @@ const DATA = {
     loading_text: "欢迎来到 Selina 的世界",
     nav: { about: "关于", philosophy: "理念", portfolio: "作品", experience: "经历", contact: "联系" },
     hero: {
-      greeting_back: "Hello",
-      greeting_front: "你好.",
+      greeting_back: "你好", // Updated to Chinese
+      greeting_front: "Hello.", // Changed to English as requested for foreground
       intro: "我是王木子一 (Selina)",
       role: "红人营销 | 内容策略 | 数据驱动创意", 
       location: "迈阿密 & 北京",
@@ -165,8 +176,8 @@ const DATA = {
       view_xhs: "查看小红书"
     },
     portfolio: {
-        title: "视觉与策略作品",
-        subtitle: "摄影、摄像以及策略案例研究精选。",
+        title: "视觉与设计作品",
+        subtitle: "摄影、设计以及策略案例研究精选。",
         items: [
             {
                 title: "毕业季专业拍摄",
@@ -175,10 +186,10 @@ const DATA = {
                 icon: "camera"
             },
             {
-                title: "专业作品集 Drive",
-                desc: "高质量摄影作品精选集。",
-                link: "https://drive.google.com/drive/folders/1cKPRD0EXFjNVA9mrXoMCFIJilxapqvin",
-                icon: "image"
+                title: "设计作品合集", // Updated Title
+                desc: "包含平面设计、UI/UX 元素及品牌视觉的创意作品集。", // Updated Desc
+                link: "https://drive.google.com/drive/folders/1fP-jvln5xFsfnD57bEMPPNG2qp2Wxt6I?usp=sharing", // Updated Link
+                icon: "palette" // Changed Icon
             },
             {
                 title: "活动现场记录",
@@ -228,6 +239,15 @@ const DATA = {
           ]
         },
         {
+          company: "YNLY Media (引力传媒)", // Added from Resume
+          role: "红人营销实习生",
+          period: "2022.06 - 2022.09",
+          location: "北京",
+          type: "text",
+          tags: ["KOL管理", "信息流广告", "增长策略"],
+          [cite_start]details: "识别并管理500+小红书/抖音头部母婴生活KOL [cite: 651][cite_start]。统筹生产150+原生广告素材，单篇优质内容浏览量突破5万+ [cite: 652]。"
+        },
+        {
           company: "小红书 (RED)",
           role: "内容策划实习生",
           period: "2024.05 - 2024.08",
@@ -260,17 +280,17 @@ const DATA = {
   }
 };
 
-// --- STYLES & FONTS INJECTION (Reverted to Soft/Elegant) ---
+// --- STYLES & FONTS INJECTION ---
 const StyleInjector = () => (
     <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
 
         :root {
-            /* Palette: Soft Sage & Cream */
+            /* Palette: Soft Sage & Cream (Jules Studio Vibe) */
             --bg-cream: #FDFCF8;
-            --accent-green-pale: #E8F1E8;  /* Very soft sage */
-            --accent-green-medium: #CBD5C0; /* Muted green */
-            --accent-green-deep: #7A8574;   /* Elegant dark olive for text */
+            --accent-green-pale: #E8F1E8;  
+            --accent-green-medium: #CBD5C0; 
+            --accent-green-deep: #7A8574;   
             --text-main: #2D2A26;
             --text-muted: #6B655F;
         }
@@ -286,15 +306,15 @@ const StyleInjector = () => (
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Soft Hollow Text Effect (Reverted) */
+        /* Hollow Text Effect for Chinese Characters */
         .text-hollow {
             -webkit-text-stroke: 1.5px var(--accent-green-medium);
             color: transparent;
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none; user-select: none;
+            font-family: 'Cormorant Garamond', serif; /* Use serif for elegant Chinese too */
         }
         
-        /* Soft Blobs (Green Tones) */
         .pastel-blob {
             position: absolute;
             border-radius: 50%;
@@ -311,7 +331,6 @@ const StyleInjector = () => (
             100% { transform: translate(30px, -30px) scale(1.1); }
         }
 
-        /* Soft Card Hover (No sharp borders) */
         .card-soft {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid transparent;
@@ -323,7 +342,6 @@ const StyleInjector = () => (
             border-color: var(--accent-green-pale);
         }
 
-        /* Image Fade */
         .img-fade-left {
             -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
             mask-image: linear-gradient(to left, black 50%, transparent 100%);
@@ -331,7 +349,6 @@ const StyleInjector = () => (
             object-position: center top;
         }
         
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-cream); }
         ::-webkit-scrollbar-thumb { background: var(--accent-green-medium); border-radius: 10px; }
@@ -377,13 +394,11 @@ const App = () => {
       <StyleInjector />
       <LoadingScreen text={t.loading_text} />
 
-      {/* Pastel Green Background Blobs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-[var(--bg-cream)]">
           <div className="pastel-blob blob-1 w-[40rem] h-[40rem] top-[-10%] left-[-10%]"></div>
           <div className="pastel-blob blob-2 w-[35rem] h-[35rem] bottom-[-10%] right-[-5%]"></div>
       </div>
 
-      {/* --- NAVIGATION --- */}
       <nav className={`fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center transition-all duration-300 ${scrollY > 50 ? 'bg-white/70 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'}`}>
         <div className="text-2xl font-delicate font-bold tracking-tight cursor-pointer z-50 text-[var(--text-main)]" onClick={() => scrollTo('home')}>
           Selina Wang.
@@ -419,8 +434,8 @@ const App = () => {
           
           <div className="md:col-span-7 flex flex-col justify-center items-start space-y-8 z-20 relative pt-10">
              <div className="relative w-full">
-                {/* Reverted to Hollow Text Style */}
-                <h1 className="text-[7rem] md:text-[11rem] leading-none font-delicate font-bold text-hollow absolute -top-10 md:-top-20 left-0 select-none -z-10">
+                {/* Updated Background Text to Chinese */}
+                <h1 className="text-[12rem] md:text-[18rem] leading-none font-delicate font-bold text-hollow absolute -top-24 md:-top-48 left-[-2rem] select-none -z-10 opacity-20">
                     {t.hero.greeting_back}
                 </h1>
                 <h1 className="text-6xl md:text-8xl font-delicate font-medium leading-[1.1] text-[var(--text-main)] relative z-10 ml-2">
@@ -482,7 +497,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- PHILOSOPHY SECTION (Reverted to Cards) --- */}
+      {/* --- PHILOSOPHY SECTION --- */}
       <section id="philosophy" className="py-32 relative z-10">
         <div className="container mx-auto px-6">
           <div className="bg-white/40 backdrop-blur-sm rounded-[3rem] p-8 md:p-16 border border-white/50 shadow-sm">
@@ -498,7 +513,6 @@ const App = () => {
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6 font-sans">
-                        {/* Soft Green Cards */}
                         <div className="card-soft p-8 bg-[var(--accent-green-pale)]/50 rounded-3xl">
                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mb-4 text-[var(--accent-green-deep)]">S</div>
                             <h3 className="text-xl font-bold mb-2 font-delicate">{t.philosophy.shef_title}</h3>
@@ -530,7 +544,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- PORTFOLIO SECTION --- */}
+      {/* --- PORTFOLIO SECTION (Updated) --- */}
       <section id="portfolio" className="py-24 relative z-10">
           <div className="container mx-auto px-6">
               <div className="text-center mb-16">
@@ -544,7 +558,7 @@ const App = () => {
                       <a key={index} href={item.link} target="_blank" rel="noreferrer" className="group h-full">
                           <div className="card-soft bg-white/60 backdrop-blur p-8 rounded-[2.5rem] h-full flex flex-col relative overflow-hidden">
                               <div className="w-14 h-14 rounded-2xl bg-[var(--accent-green-pale)] flex items-center justify-center mb-6 text-[var(--accent-green-deep)] group-hover:scale-110 transition-transform">
-                                  {item.icon === 'camera' ? <Camera size={24}/> : item.icon === 'image' ? <ImageIcon size={24}/> : <Video size={24}/>}
+                                  {item.icon === 'camera' ? <Camera size={24}/> : item.icon === 'palette' ? <Palette size={24}/> : <Video size={24}/>}
                               </div>
                               <h3 className="text-2xl font-bold font-delicate mb-3">{item.title}</h3>
                               <p className="text-[var(--text-muted)] mb-8 leading-relaxed font-sans text-sm flex-grow">{item.desc}</p>
@@ -558,7 +572,7 @@ const App = () => {
           </div>
       </section>
 
-      {/* --- EXPERIENCE SECTION --- */}
+      {/* --- EXPERIENCE SECTION (Added YNLY) --- */}
       <section id="experience" className="py-32 container mx-auto px-6 z-10 relative">
         <div className="text-center mb-20">
            <h2 className="text-5xl md:text-7xl font-delicate font-bold mb-4">{t.experience.title}</h2>
